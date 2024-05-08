@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="x-icon" herf="twitter.png">
+<title>Color Cycling Button with Counter and Restart</title>
+<style>
+/* Styling for the button */
+.button {
+  background-color: #4CAF50; /* Green by default */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Styling for the button when it's red */
+.red {
+  background-color: red !important; /* Adding !important to override previous background-color */
+}
+</style>
+</head>
+<body>
+
+<!-- Button element -->
+<button class="button" id="myButton">Click me</button>
+
+<!-- Counter element -->
+<p>Counter: <span id="counter">0</span></p>
+
+<!-- Restart button -->
+<button id="restartButton">Restart</button>
+
+<h1>Task: reach 100 clicks</h1>
+<h1>bet you to reach 1000 without using autoclicker</h1> 
+
+<!-- JavaScript to handle the button click, toggle colors, update counter, and restart -->
+<script>
+// Get the button element
+var button = document.getElementById("myButton");
+
+// Get the counter element
+var counterElement = document.getElementById("counter");
+
+// Get the restart button element
+var restartButton = document.getElementById("restartButton");
+
+// Variable to track the current color state
+var isRed = false;
+
+// Counter variable
+var counter = 0;
+
+// Add a click event listener to the button
+button.addEventListener("click", function() {
+  // Increment the counter
+  counter++;
+  
+  // Update the counter element
+  counterElement.textContent = counter;
+
+  // Toggle between red and green colors
+  if (isRed) {
+    button.classList.remove("red");
+    isRed = false;
+  } else {
+    button.classList.add("red");
+    isRed = true;
+  }
+});
+
+// Add a click event listener to the restart button
+restartButton.addEventListener("click", function() {
+  // Reset the counter to 0
+  counter = 0;
+  // Update the counter element to display 0
+  counterElement.textContent = counter;
+  // Remove the red class from the button to reset its color to green
+  button.classList.remove("red");
+  // Reset the color state to false
+  isRed = false;
+});
+</script>
+
+</body>
+</html>
+
